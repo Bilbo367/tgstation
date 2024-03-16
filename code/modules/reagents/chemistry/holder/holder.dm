@@ -58,6 +58,9 @@
 	return ..()
 
 
+/datum/reagents/CheckReagents(datum/reagents/holder)
+	return ..()
+
 /**
  * Convenience proc to create a reagents holder for an atom
  *

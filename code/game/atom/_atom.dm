@@ -321,10 +321,10 @@
 /**
  * Ensure a list of atoms/reagents exists inside this atom
  *
- * Goes throught he list of passed in parts, if they're reagents, adds them to our reagent holder
+ * Goes through the list of passed in parts, if they're reagents, adds them to our reagent holder
  * creating the reagent holder if it exists.
  *
- * If the part is a moveable atom and the  previous location of the item was a mob/living,
+ * If the part is a moveable atom and the previous location of the item was a mob/living,
  * it calls the inventory handler transferItemToLoc for that mob/living and transfers the part
  * to this atom
  *
