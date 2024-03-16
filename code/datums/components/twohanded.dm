@@ -208,6 +208,9 @@
 		else
 			atom_parent.balloon_alert(user, "holding something in other hand!")
 		return
+		var/datum/action/item_action/dropping_action = atom_parent.actions[0]
+		to_chat(world, dropping_action)
+		dropping_action.Remove(dropping_action.owner)
 	if(user.usable_hands < 2)
 		if(require_twohands)
 			user.dropItemToGround(parent, force=TRUE)
