@@ -150,6 +150,7 @@
 /datum/component/two_handed/proc/on_equip(datum/source, mob/user, slot)
 	SIGNAL_HANDLER
 
+	to_chat(world, "equiping")
 	if(require_twohands && (slot & ITEM_SLOT_HANDS)) // force equip the item
 		wield(user)
 	if(!user.is_holding(parent) && wielded && !require_twohands)
@@ -189,6 +190,7 @@
  * * user The mob/living/carbon that is wielding the item
  */
 /datum/component/two_handed/proc/wield(mob/living/carbon/user)
+	to_chat(world, "start wielding")
 	if(wielded)
 		return
 	var/atom/atom_parent = parent
@@ -202,7 +204,7 @@
 	if(user.get_inactive_held_item())
 		if(require_twohands)
 			atom_parent.balloon_alert(user, "can't carry in one hand!")
-			user.dropItemToGround(parent, force = TRUE)
+			user.dropItemToGround(parent, force = TRUE, two_handed = TRUE)
 		else
 			atom_parent.balloon_alert(user, "holding something in other hand!")
 		return
@@ -211,6 +213,7 @@
 			user.dropItemToGround(parent, force=TRUE)
 		atom_parent.balloon_alert(user, "not enough hands!")
 		return
+	to_chat(world, "contiunue wielding")
 
 	// wield update status
 	if(SEND_SIGNAL(parent, COMSIG_TWOHANDED_WIELD, user) & COMPONENT_TWOHANDED_BLOCK_WIELD)

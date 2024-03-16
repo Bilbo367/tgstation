@@ -1427,9 +1427,15 @@
 	var/turf/targ = get_ranged_target_turf(src, splatter_direction, splatter_strength)
 	our_splatter.fly_towards(targ, splatter_strength)
 
-/mob/living/carbon/dropItemToGround(obj/item/item, force = FALSE, silent = FALSE, invdrop = TRUE)
+/mob/living/carbon/dropItemToGround(obj/item/item, force = FALSE, silent = FALSE, invdrop = TRUE, two_handed = TRUE)
 	if(item && ((item in organs) || (item in bodyparts))) //let's not do this, aight?
 		return FALSE
+	if(two_handed)
+		to_chat(world, "removingSource")
+		to_chat(world, /datum/action/item_action/startchainsaw)
+		qdel(GetComponent(/datum/action/item_action/startchainsaw))
+		RemoveElement()
+		to_chat(world, "Rm")
 	return ..()
 
 /// Helper to cleanly trigger tail wagging

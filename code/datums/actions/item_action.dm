@@ -5,6 +5,7 @@
 	button_icon_state = null
 
 /datum/action/item_action/New(Target)
+	to_chat(world, "new item_action")
 	. = ..()
 
 	// If our button state is null, use the target's icon instead
