@@ -96,9 +96,10 @@
 	var/_dir = dir
 	var/turf/target = get_step(origin, _dir)
 	if(target)
-		var/beam_icon_state = "ibeam"
-		var/beam_icon = 'icons/obj/weapons/guns/projectiles.dmi'
-		infrared_beam = origin.Beam(BeamTarget = target, icon_state = beam_icon_state, icon = beam_icon, maxdistance = maxlength)
+		infrared_beam.Destroy()
+		//var/beam_icon_state = "ibeam"
+		//var/beam_icon = 'icons/obj/weapons/guns/projectiles.dmi'
+		infrared_beam = origin.Beam(BeamTarget = target, maxdistance = maxlength)
 		// for(var/i in 1 to maxlength)
 		// 	if(istype(holder, /obj/item/assembly_holder))
 		// 		I.icon_state = "[initial(I.icon_state)]_l" //Sync the offset of the beam with the position of the sensor.
