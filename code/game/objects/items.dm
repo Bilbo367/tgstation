@@ -664,7 +664,9 @@
 	SHOULD_NOT_OVERRIDE(TRUE)
 	equipped(user, slot, initial)
 	if(SEND_SIGNAL(src, COMSIG_ITEM_POST_EQUIPPED, user, slot) && COMPONENT_EQUIPPED_FAILED)
+		to_chat(world, "equiping fail")
 		return FALSE
+	to_chat(world, "equiping success")
 	return TRUE
 
 /**

@@ -40,12 +40,14 @@
 
 
 /obj/item/storage/belt/unfathomable_curio/equipped(mob/user, slot, initial)
-	. = ..()
-	if(!(slot & slot_flags))
-		return
+	to_chat(world, "equiping curio")
+	if(ITEM_SLOT_BELT & slot)
+		. = ..()
+		to_chat(world, "equiping end")
+		to_chat(world, .)
 
-	if(!IS_HERETIC(user))
-		to_chat(user, span_warning("The curio wraps around you, and you feel the beating of something dark inside it..."))
+		if(!IS_HERETIC(user))
+			to_chat(user, span_warning("The curio wraps around you, and you feel the beating of something dark inside it..."))
 
 
 // Our on hit effect
